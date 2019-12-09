@@ -7,68 +7,6 @@ Created on Thu Dec  5 08:57:46 2019
 
 import AoCHelper as AC
 
-in5 = AC.readInputCommaLine("input5.txt")
-in5 = AC.strtoint(in5)
-print(in5)
-#in5[1] = 12
-#in5[2] = 2
-def findoutput(listname,inputed):
-    temp = listname.copy()
-    i = 0
-    while i < len(temp):
-        if temp[i] == 1:
-            temp[temp[i+3]] = temp[temp[i+1]] + temp[temp[i+2]]
-            i += 4
-        elif temp[i] == 2:
-            temp[temp[i+3]] = temp[temp[i+1]] * temp[temp[i+2]]
-            i += 4
-        elif temp[i] == 3:
-            temp[temp[i+1]] = inputed
-            i += 2
-        elif temp[i] == 4:
-            print(temp[temp[i+1]])
-            i += 2
-        elif len(str(temp[i])) > 2:
-            tnum = str(temp[i])
-            if len(tnum) == 4:
-                A = temp[i+3]
-            else:
-                A = i+3
-            if tnum[-1] == 1:
-                add = True
-            elif tnum[-1] == 2:
-                add = False
-            else:
-                print('error')
-                break
-            if tnum[-3] == 1:
-                C = i+1
-            else:
-                C = temp[i+1]
-            if len(tnum) > 3 and tnum[-4] == 1:
-                B = i+2
-            else:
-                B = temp[i+2]
-                
-            print(C,B,A)
-            if add:
-                temp[A] = temp[C] + temp[B]
-            else:
-                temp[A] = temp[C] * temp[B]
-            i += 4
-            
-        elif temp[i] == 99:
-            break
-        else:
-            print("wrong input at")
-            print(i,temp[i])
-            break
-        print(i)
-    return temp
-
-#print(findoutput(in5,1))
-#print(in5)
-
 programToRun = AC.readInputCommaLine("input5.txt")
 
 
@@ -151,5 +89,6 @@ def runProgram(programToRun, input):
 
     return programToRun
 
-runProgram(programToRun, 5)
+runProgram(programToRun, 1) #task 1
+runProgram(programToRun, 5) #task 2
 
