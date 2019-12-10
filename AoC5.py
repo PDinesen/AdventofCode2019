@@ -7,7 +7,7 @@ Created on Thu Dec  5 08:57:46 2019
 
 import AoCHelper as AC
 
-programToRun = AC.readInputCommaLine("input5.txt")
+st = AC.readInputCommaLine("input5.txt")
 
 
 def getNextInstruction(instructionParam):
@@ -27,9 +27,11 @@ def getParameter(io, paramPos, instructionPos, programToRun):
         return instructionPos + paramPos
 
 
-def runProgram(programToRun, input):
+def runProgram(programTo, input, input2):
+    programToRun = programTo.copy()
     instructionPosition = 0
-
+    output = 0
+    inputparam = input
     instruction = getNextInstruction(int(programToRun[instructionPosition]))
 
     while instruction in (1, 2, 3, 4, 5, 6, 7, 8):
@@ -47,7 +49,7 @@ def runProgram(programToRun, input):
                 output = int(programToRun[instructionPosition + 3])
             except IndexError:
                 output = 0
-
+        
         if instruction == 1:
             programToRun[output] = int(programToRun[firstInput]) + int(programToRun[secondInput])
             nextStep = instructionPosition + 4
@@ -55,10 +57,12 @@ def runProgram(programToRun, input):
             programToRun[output] = int(programToRun[firstInput]) * int(programToRun[secondInput])
             nextStep = instructionPosition + 4
         if instruction == 3:
-            programToRun[firstInput] = input
+            programToRun[firstInput] = inputparam
+            inputparam = input2 
             nextStep = instructionPosition + 2
         if instruction == 4:
-            print("Output is " + str(programToRun[firstInput]))
+            output = programToRun[firstInput]
+            #print("Output is " + str(programToRun[firstInput]))
             nextStep = instructionPosition + 2
         if instruction == 5:
             if int(programToRun[firstInput]) != 0:
@@ -87,8 +91,8 @@ def runProgram(programToRun, input):
         instruction = getNextInstruction(programToRun[nextStep])
         instructionPosition = nextStep
 
-    return programToRun
+    return output
 
-runProgram(programToRun, 1) #task 1
-runProgram(programToRun, 5) #task 2
+#print(runProgram(st, 1,1)) #task 1
+#print(runProgram(st, 5,5)) #task 2
 
