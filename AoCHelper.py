@@ -17,3 +17,4 @@ def strtoint(listname):
     for i in listname:
         temp.append(int(i))
     return temp
+
