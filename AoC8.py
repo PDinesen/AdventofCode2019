@@ -13,17 +13,16 @@ st = AC.readInputLines("input8.txt")
 def splitlen(listname,ant):
     temp = []
     leng = int(len(listname[0])/ant)
-    for i in range(ant):
-        temp.append(listname[0][leng * i: leng * (i + 1)])
+    for i in range(leng):
+        temp.append(listname[0][ant * i: ant * (i + 1)])
         
     return temp
 
-print(splitlen(st,6)[0][0])
 
-def check0andcal(inputname,antlayers):
-    temp = splitlen(inputname,antlayers)
+def check0andcal(inputname,numInLay):
+    temp = splitlen(inputname,numInLay)
     test = len(temp[0])
-    print(temp)
+    #print(temp)
     for i in temp:
         sum0 = 0
         sum1 = 0
@@ -35,12 +34,34 @@ def check0andcal(inputname,antlayers):
                 sum1 += 1
             elif j == '2':
                 sum2 += 1
-        print(sum0,sum1,sum2,sum0+sum1+sum2)
+        #print(sum0,sum1,sum2,sum0+sum1+sum2)
         if sum0 < test:
             test = sum0
             temp1 = sum1*sum2
-            print(temp1)
+            #print(temp1)
         
     return temp1
 
-print(check0andcal(st,6))
+print(check0andcal(st,6*25))
+
+def findImage(inputname,numInLay):
+    temp = splitlen(inputname,numInLay)
+    res = ['2']*numInLay
+    for i in temp:
+        for j in range(len(i)):
+            if res[j] == '2':
+                res[j] = i[j]
+        print(res)
+        
+    ans = ''
+    for i in res:
+        ans += i
+    return ans
+
+print(findImage(st,25*6))
+a = findImage(st,25*6)
+
+for i in range(6):
+    print(a[25*i:25*(i+1)])
+            
+
