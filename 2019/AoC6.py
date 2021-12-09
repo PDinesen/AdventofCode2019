@@ -4,7 +4,7 @@ Created on Fri Dec  6 09:14:11 2019
 
 @author: Mitfo
 """
-import AoCHelper as AC
+import ACH as AC
 
 st = AC.readInputLines("input6.txt")
 

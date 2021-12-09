@@ -4,7 +4,7 @@ Created on Wed Dec  4 08:23:31 2019
 
 @author: Mitfo
 """
-import AoCHelper as AC
+import ACH as AC
 
 
 input31 = AC.readInputCommaLine("input31.txt")
